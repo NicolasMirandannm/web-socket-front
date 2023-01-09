@@ -1,38 +1,81 @@
 <template>
   <div class="home">
     <div class="panel">
-      <div class="password">
-        {{password}}
-      </div>
+      <button @click="exportExcel()">Export excel file</button>
     </div>
   </div>
 </template>
 
 <script>
-import { io } from 'socket.io-client';
-
 export default {
   data() {
     return {
-      password: ''
-    }
+      password: "",
+      hostName: "",
+      jsonFile: [
+        {
+          id: 1,
+          name: "nicolas",
+          age: 20,
+        },
+        {
+          id: 2,
+          name: "joao",
+          age: 21,
+        },
+        {
+          id: 3,
+          name: "maria",
+          age: 20,
+        },
+        {
+          id: 4,
+          name: "jose",
+          age: 23,
+        },
+        {
+          id: 5,
+          name: "ana",
+          age: 21,
+        },
+        {
+          id: 6,
+          name: "leticia",
+          age: 18,
+        },
+      ],
+    };
   },
-  created() {
-    const socket = io('http://localhost:3000');
-    
-    socket.on('connection', (data) => console.log(data));
-    socket.on('attendanceCall', (data) => {
-      console.log(data.password)
-      this.password = data.password
-    });
+  methods: {
+    exportExcel() {
+      import("../services/ExportToExcel").then((excel) => {
+        const Obj = this.jsonFile;
+        const Header = ["id", "name", "age"];
+        const Field = ["id", "name", "age"];
+        const Data = this.formatJson(Field, Obj);
 
-  }
-}
-
+        excel.export_json_to_excel({
+          header: Header,
+          data: Data,
+          sheetName: "Name Of Sheets",
+          filename: "Report",
+          autoWidth: true,
+          bookType: "xlsx",
+        });
+      });
+    },
+    formatJson(filterData, jsonData) {
+      return jsonData.map((json) =>
+        filterData.map((j) => {
+          return json[j];
+        })
+      );
+    },
+  },
+};
 </script>
 
 <style scoped>
-
 * {
   height: 90vh;
   display: flex;
@@ -40,12 +83,19 @@ export default {
   align-items: center;
 }
 .panel {
-  height: 150px;
-  width: 200px;
+  height: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgb(224, 215, 215);
-  
+}
+
+button {
+  height: 60px;
+  width: 180px;
+  text-align: center;
+  justify-content: center;
+  cursor: pointer;
 }
 </style>
