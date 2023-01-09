@@ -1,7 +1,20 @@
 <template>
   <div class="home">
     <div class="panel">
-      <button @click="exportExcel()">Export excel file</button>
+      <h1>service export to excel</h1>
+      <button class="button" @click="exportExcel()">Export excel file</button>
+    </div>
+    <div class="package">
+      <h1>package export json excel</h1>
+      <download-excel
+        class="button"
+        :data="jsonFile"
+        :fields="json_fields"
+        worksheet="My Worksheet"
+        name="filename.xlsx"
+      >
+        Download Excel (you can customize this with html code!)
+      </download-excel>
     </div>
   </div>
 </template>
@@ -10,8 +23,19 @@
 export default {
   data() {
     return {
-      password: "",
-      hostName: "",
+      json_meta: [
+        [
+          {
+            key: "charset",
+            value: "utf-8",
+          },
+        ],
+      ],
+      json_fields: {
+        id: "id",
+        nome: "name",
+        idade: "age",
+      },
       jsonFile: [
         {
           id: 1,
@@ -79,11 +103,12 @@ export default {
 * {
   height: 90vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
 }
 .panel {
-  height: 100%;
+  height: 45%;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -91,11 +116,25 @@ export default {
   background-color: rgb(224, 215, 215);
 }
 
-button {
+.package {
+  height: 45%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(224, 215, 215);
+}
+
+.button {
   height: 60px;
   width: 180px;
   text-align: center;
   justify-content: center;
   cursor: pointer;
+  margin-bottom: 20px;
+  background: white;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 1px 2px 1px;
 }
 </style>
