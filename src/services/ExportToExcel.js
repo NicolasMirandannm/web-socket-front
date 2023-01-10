@@ -22,8 +22,8 @@ function sheet_from_array_of_arrays(data, opts) {
     };
     /*  ចំនូនលេខ សូន្យក្រោយ ចុច*/
     var fmt = "0.00";
-    var fontSR = "Khmer OS Siemreap";
-    var fontRoboto = "Roboto";
+    var fontSR = "";
+    var fontRoboto = "";
     /*  String  ជាលេខ*/
     function isNumber(value) {
         if (typeof value === "string") {

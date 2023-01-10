@@ -14,6 +14,11 @@ const routes: Array<RouteConfig> = [
     path: '/Caller',
     name: 'Caller',
     component: () => import('../views/Caller.vue')
+  },
+  {
+    path: '/table',
+    name: 'table',
+    component: () => import('../views/table.vue')
   }
 ]
 

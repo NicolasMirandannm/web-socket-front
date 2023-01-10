@@ -6,15 +6,16 @@
     </div>
     <div class="package">
       <h1>package export json excel</h1>
-      <download-excel
-        class="button"
-        :data="jsonFile"
-        :fields="json_fields"
-        worksheet="My Worksheet"
-        name="filename.xlsx"
-      >
-        Download Excel (you can customize this with html code!)
-      </download-excel>
+
+        <download-excel
+          class="button"
+          :data="jsonFile"
+          :fields="json_fields"
+          worksheet="My Worksheet"
+          name="filename.xlsx"
+        >
+          Download Excel (you can customize this with html code!)
+        </download-excel>
     </div>
   </div>
 </template>
