@@ -40,32 +40,32 @@ export default {
       jsonFile: [
         {
           id: 1,
-          name: "nicolas",
+          name: ["nicolas", "teste", "teste2"],
           age: 20,
         },
         {
           id: 2,
-          name: "joao",
+          name: ["joao"],
           age: 21,
         },
         {
           id: 3,
-          name: "maria",
+          name: ["maria"],
           age: 20,
         },
         {
           id: 4,
-          name: "jose",
+          name: ["jose"],
           age: 23,
         },
         {
           id: 5,
-          name: "ana",
+          name: ["ana"],
           age: 21,
         },
         {
           id: 6,
-          name: "leticia",
+          name: ["leticia"],
           age: 18,
         },
       ],

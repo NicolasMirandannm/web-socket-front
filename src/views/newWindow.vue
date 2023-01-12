@@ -1,7 +1,7 @@
 <template>
   <div v-if="open">
     <div
-      class="container"
+      id="container"
       style="
         height: 100%;
         width: 100%;
@@ -11,14 +11,19 @@
         justify-content: center;
       "
     >
-      <div style="width: 80%; overflow: auto;">
+      <img
+        src="../assets/logo.png"
+        alt="lock"
+        height="20px"
+        width="20px"
+      />
+      <div style="width: 100%; overflow: auto">
         <table
           style="
             border: 1px solid #ccc;
             border-collapse: collapse;
             margin: 0;
             padding: 0;
-            width: 100%;
             table-layout: fixed;
           "
         >
@@ -35,6 +40,7 @@
                 style="padding: 0.625em;
                  text-align: centerfont-size: .85em;
                   letter-spacing: .1em;
+                  border: 1px solid #ddd;
                   text-transform: uppercase;"
                 v-for="(header, i) in headers"
                 :key="i"
@@ -55,7 +61,11 @@
             >
               <td
                 data-label="Account"
-                style="padding: 0.625em; text-align: center"
+                style="
+                  padding: 0.625em;
+                  text-align: center;
+                  border: 1px solid #ddd;
+                "
                 v-for="(atribute, i) in user"
                 :key="i"
               >
@@ -82,26 +92,36 @@ export default {
   data() {
     return {
       windowRef: null,
-      headers: ["id", "nome", "idade", "teste1", "teste2", "teste3", "teste1", "teste2", "teste3"],
+      headers: [
+        "idxxxxxxxxxxxx",
+        "nomexxxxxxxxx",
+        "idade111111",
+        "testasdasdase1",
+        "testasddasdase2",
+        "tesasdasdasdte3",
+        "tesasdasddte1",
+        "tdasdasdasdaeste2",
+        "testesdasdasda3",
+      ],
       data: [
         {
           id: 1,
-          nome: ['teste', 'teste2', 'teste3'],
+          nome: ["teste", "teste2", "teste3"],
           idade: 20,
         },
         {
           id: 2,
-          nome: "joao",
+          nome: "joaoasdasdasd asdasdasdassssssssssssssssssssssdasdasdasdasda",
           idade: 20,
         },
         {
           id: 2,
-          nome: "jose",
+          nome: "joseasdasds adasdasdas",
           idade: 20,
         },
         {
           id: 1,
-          nome: "nicolas",
+          nome: "nicoladasddadasdass",
           idade: 20,
         },
         {
@@ -238,6 +258,8 @@ export default {
         "",
         "width=1200,height=800,left=75,top=100"
       );
+      this.windowRef.document.style;
+
       this.windowRef.addEventListener("beforeunload", this.closePortal);
       // magic!
       this.windowRef.document.body.appendChild(this.$el);
