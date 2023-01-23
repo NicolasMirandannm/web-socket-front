@@ -19,6 +19,11 @@ const routes: Array<RouteConfig> = [
     path: '/table',
     name: 'table',
     component: () => import('../views/table.vue')
+  },
+  {
+    path: '/guiche-list',
+    name: 'GuicheList',
+    component: () => import('../views/guicheList.vue')
   }
 ]
 

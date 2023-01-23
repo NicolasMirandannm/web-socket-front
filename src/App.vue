@@ -1,10 +1,10 @@
 <template>
   <v-app>
     <v-main>
-      <nav>
+      <!-- <nav>
         <router-link to="/">Panel</router-link> |
         <router-link to="/Caller">Caller</router-link>
-      </nav>
+      </nav> -->
       <router-view />
     </v-main>
   </v-app>
@@ -21,3 +21,5 @@ export default Vue.extend({
   }),
 });
 </script>
+
+
