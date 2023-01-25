@@ -1,7 +1,9 @@
 <template>
   <div class="container">
-    <div class="wrapper">
+    <div class="wrapper" v-if="!isIdle">
       <h1 class="title">Guichês em uso</h1>
+
+      <div>{{ isIdle }}</div>
 
       <div class="table-wrapper">
         <table class="table" >
@@ -26,6 +28,9 @@
         </table>
       </div>
     </div>
+    <div v-else style="font-size: 100px">
+      {{ teste }}
+    </div>
   </div>
 </template>
 
@@ -43,8 +48,23 @@ export default {
           useStatus: "Livre",
         },
       ],
+      teste: ""
     };
   },
+  computed: {
+		isIdle() {
+			return this.$store.state.idleVue.isIdle;
+		}
+	},
+
+
+  watch: {
+    isIdle(newVal) {
+      if(newVal) {
+        this.teste = 'INATIVO'
+      }
+    }
+  }
 };
 </script>
 
@@ -75,38 +95,6 @@ export default {
   width: 90%;
   height: 90%;
 }
-/* 
-.table {
-  margin: 0;
-  padding: 0;
-  table-layout: fixed;
-  border-collapse: collapse;
-  border: 1px solid #ccc;
-}
-
-tr {
-  background-color: #f1f1f1;
-  border: 1px solid #ddd;
-  padding: 0.35em;
-}
-
-th {
-  padding: 0.625em;
-  text-align: center;
-  border: 1px solid #ddd;
-}
-
-tr {
-  background-color: #fafafa;
-  border: 1px solid #ddd;
-  padding: 0.35em;
-}
-
-td {
-  padding: 0.625em;
-  text-align: center;
-} */
-
 .table {
   border-collapse: collapse;
     margin: 25px 0;
